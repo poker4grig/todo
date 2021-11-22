@@ -13,7 +13,7 @@ const UserItem = ({user}) => {
 }
 
 const UserList = ({users}) => {
-    return(
+    return (
         <table>
             <th>User name</th>
             <th>First name</th>
@@ -24,7 +24,6 @@ const UserList = ({users}) => {
 
     )
 }
-
 
 
 export default UserList

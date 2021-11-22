@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Menu = () => {
-    return(
+    return (
         <div>
             <ul className="menu-main">
                 <li><a href="" className="current">Главная страница</a></li>

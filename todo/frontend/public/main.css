@@ -98,13 +98,14 @@ a {
 /*    justify-content: flex-start;*/
 /*}*/
 footer {
- position: relative; /* Относительное позиционирование */
+    position: relative; /* Относительное позиционирование */
     background-color: #04414d;
     height: 100px;
     margin-top: 350px;
 
     /*position: absolute;*/
 }
+
 .copyright {
     width: 740px; /* Ширина макета без полей */
     padding: 30px 10px 10px; /* Поля */

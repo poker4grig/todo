@@ -28,26 +28,27 @@ class App extends React.Component {
             }
         ).catch(error => console.log(error))
     }
-        // const users = [
-        //     {
-        //         'username': 'sergey',
-        //         'first_name': 'Сергей',
-        //         'last_name': 'Григорьев',
-        //         'email': 'poker4grig@mail.ru'
-        //     },
-        //     {
-        //         'username': 'denis',
-        //         'first_name' : 'Денис',
-        //         'last_name': 'Давыдов',
-        //         'email': 'denden@yandex.ru'
-        //     },
-        //     {
-        //         'username': 'vasya',
-        //         'first_name' : 'Василий',
-        //         'last_name': 'Александров',
-        //         'email': 'vasya@gmail.com.ru'
-        //     }
-        // ]
+
+    // const users = [
+    //     {
+    //         'username': 'sergey',
+    //         'first_name': 'Сергей',
+    //         'last_name': 'Григорьев',
+    //         'email': 'poker4grig@mail.ru'
+    //     },
+    //     {
+    //         'username': 'denis',
+    //         'first_name' : 'Денис',
+    //         'last_name': 'Давыдов',
+    //         'email': 'denden@yandex.ru'
+    //     },
+    //     {
+    //         'username': 'vasya',
+    //         'first_name' : 'Василий',
+    //         'last_name': 'Александров',
+    //         'email': 'vasya@gmail.com.ru'
+    //     }
+    // ]
 
 
     render() {
