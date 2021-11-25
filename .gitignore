@@ -6,3 +6,4 @@ venv/
 db.sqlite3
 README.md
 .env_my
+lesson_3_tests/
