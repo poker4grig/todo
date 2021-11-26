@@ -25,3 +25,4 @@ class Todo(models.Model):
     # def __str__(self):
     #     return f'Заметка № {self.id} для пользователя {self.user} (проект {self.project})'
 
+

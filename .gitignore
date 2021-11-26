@@ -8,3 +8,5 @@ README.md
 .env_my
 lesson_3_tests/
 lesson_4_tests/
+filters.py
+test_views_urls.py
