@@ -1,4 +1,5 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.generics import ListAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework.pagination import LimitOffsetPagination
 from users.models import User
 from users.serializers import UserModelSerializer
@@ -6,15 +7,12 @@ from users.serializers import UserModelSerializer
 # Create your views here.
 
 
-class TodoLimitOffsetPagination(LimitOffsetPagination):
+class UserLimitOffsetPagination(LimitOffsetPagination):
     default_limit = 3
 
 
-class UserModelViewSet(ModelViewSet):
+class UserCustomViewSet(ListAPIView, RetrieveAPIView, UpdateAPIView, GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
-    pagination_class = TodoLimitOffsetPagination
-
-
-
+    pagination_class = UserLimitOffsetPagination
 
