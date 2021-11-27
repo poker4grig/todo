@@ -6,7 +6,7 @@ from rest_framework import status
 
 from project.models import Project, Todo
 from project.serializers import ProjectModelSerializer, TodoModelSerializer
-from .filters import ProjectFilter
+from .filters import ProjectFilter, TodoFilter
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
@@ -28,14 +28,17 @@ class TodoModelViewSet(ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoModelSerializer
     pagination_class = TodoLimitOffsetPagination
-    filterset_fields = ['project']
+    filterset_class = TodoFilter
 
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
+    def perform_destroy(self, instance):
         instance.is_active = False
         instance.save()
-        return Response()
 
+#############################################################################
+
+#
+# Product.objects.filter(Q(category__name='офис')|Q(category__name='модерн'))
+# В модели ToDo добавить фильтрацию по дате создания. Передадим 2 даты, дату начала и окончания (ссылка).
 
 
 
