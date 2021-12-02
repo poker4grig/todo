@@ -34,11 +34,5 @@ class TodoModelViewSet(ModelViewSet):
         instance.is_active = False
         instance.save()
 
-#############################################################################
-
-#
-# Product.objects.filter(Q(category__name='офис')|Q(category__name='модерн'))
-# В модели ToDo добавить фильтрацию по дате создания. Передадим 2 даты, дату начала и окончания (ссылка).
-
 
 
