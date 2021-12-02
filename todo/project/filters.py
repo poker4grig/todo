@@ -11,7 +11,7 @@ class ProjectFilter(filters.FilterSet):
 
 
 class TodoFilter(filters.FilterSet):
-    project = filters.CharFilter(field_name='project')
+    project = filters.CharFilter(field_name='project__name', lookup_expr='contains')
     
     class Meta:
         model = Todo

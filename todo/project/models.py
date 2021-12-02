@@ -15,8 +15,6 @@ class Project(models.Model):
 
 
 class Todo(models.Model):
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # project = models.OneToOneField(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     text = models.TextField(blank=True)

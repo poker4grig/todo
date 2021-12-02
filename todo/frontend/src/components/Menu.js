@@ -1,18 +1,23 @@
 import React from 'react';
+import {BrowserRouter, HashRouter, Link} from "react-router-dom";
+
 
 
 const Menu = () => {
     return (
         <div>
-            <ul className="menu-main">
-                <li><a href="#" className="current">Главная страница</a></li>
-                <li><a href="#">Проект</a></li>
-                <li><a href="#">Пользователи</a></li>
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Контакты</a></li>
-            </ul>
-
-
+            <HashRouter>
+                <nav>
+                    <ul className="menu-main">
+                        <li><Link className="current" to='/'>Главная страница</Link></li>
+                        <li><Link to='/todo'>Заметки</Link></li>
+                        <li><Link to='/users'>Пользователи</Link></li>
+                        <li><Link to='/projects'>Проекты</Link></li>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </nav>
+            </HashRouter>
         </div>
     )
 }
