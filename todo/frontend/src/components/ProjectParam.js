@@ -4,21 +4,12 @@ import {Link, useParams} from "react-router-dom";
 
 const ProjectItem = ({project, users}) => {
     console.log(project.user)
-    // console.log(users)
-    let wer = project.user.map(userID => ((users.find((user) => user.id == userID).username)))
-
-    console.log(wer)
 
     return (
         <tr>
             <td>{project.name}</td>
             <td>
-                {project.user.map((userID) => {return users.find((user) => user.id === userID)})}
-            </td>
-            <td>
-
-                {project.user.map((userID) => {return users.find((user) => user.id == userID)})}
-
+                {project.user.map(userID => ((users.find((user) => user.id == userID).username)))}
             </td>
             <td>{project.repo}</td>
         </tr>
