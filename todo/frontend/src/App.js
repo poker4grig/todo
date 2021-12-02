@@ -73,7 +73,7 @@ class App extends React.Component {
                         <Route exact path='/users' component={() => <UserList users={this.state.users}/>}/>
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
                         <Route exact path='/todo' component={() => <TodoList todos={this.state.todos}/>}/>
-                        <Route path='/projects/:name'><ProjectParam projects={this.state.projects}/></Route>
+                        <Route path='/projects/:name'><ProjectParam projects={this.state.projects} users={this.state.users}/></Route>
 
                         <Redirect from='/project' to='/projects'/>
                         <Redirect from='/user' to='/users'/>
