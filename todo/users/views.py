@@ -8,7 +8,7 @@ from users.serializers import UserModelSerializer
 
 
 class UserLimitOffsetPagination(LimitOffsetPagination):
-    default_limit = 3
+    default_limit = 10
 
 
 class UserCustomViewSet(ListAPIView, RetrieveAPIView, UpdateAPIView, GenericViewSet):
