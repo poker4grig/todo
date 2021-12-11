@@ -32,7 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
-    # path('api-token-auth/', views.obtain_auth_token),
-    path('api-token-auth/', obtain_jwt_token),
-    path('api-token-refresh/', refresh_jwt_token),
+    path('api-token-auth/', views.obtain_auth_token),
+    # path('api-token-auth/', obtain_jwt_token),
+    # path('api-token-refresh/', refresh_jwt_token),
 ]
