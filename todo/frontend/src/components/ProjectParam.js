@@ -9,7 +9,7 @@ const ProjectItem = ({project, users}) => {
         <tr>
             <td>{project.name}</td>
             <td>
-                {project.user.map(userID => ((users.find((user) => user.id == userID).username)))}
+                {project.user.map(userID => ((users.find((user) => user.id === userID).username)))}
             </td>
             <td>{project.repo}</td>
         </tr>
