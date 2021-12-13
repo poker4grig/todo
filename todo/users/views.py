@@ -23,3 +23,4 @@ class UserCustomViewSet(ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIVi
     serializer_class = UserModelSerializer
     pagination_class = UserLimitOffsetPagination
 
+
