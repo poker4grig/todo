@@ -167,9 +167,8 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
-    'DEFAULT_VERSIONING_CLASS':
-    # 'rest_framework.versioning.URLPathVersioning',
-    'rest_framework.versioning.NamespaceVersioning',
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+    # 'rest_framework.versioning.NamespaceVersioning',
     # 'rest_framework.versioning.QueryParameterVersioning'
     # 'rest_framework.versioning.AcceptHeaderVersioning',
 

@@ -24,7 +24,7 @@ from users.views import UserCustomViewSet, UserCustomViewSetV2
 from project.views import ProjectModelViewSet, TodoModelViewSet
 
 router = DefaultRouter()
-# router.register('users', UserCustomViewSet, basename='user')
+router.register('users', UserCustomViewSet)
 router.register('projects', ProjectModelViewSet)
 router.register('todo', TodoModelViewSet)
 
@@ -36,10 +36,8 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token),
     # path('schema/', schema_view),
-    # path('api/<str:version>/users/', UserCustomViewSetV2.as_view()),
-    # path('api/<str:version>/users/', UserCustomViewSetV2.as_view({'get': 'list'})),
-    path('api/users/v1', include('users.urls', namespace='v1')),
-    path('api/users/v2', include('users.urls', namespace='v2')),
+    path('api/<str:version>/users/', UserCustomViewSetV2.as_view()),
+
     # path('api-token-auth/', obtain_jwt_token),
     # path('api-token-refresh/', refresh_jwt_token),
 ]
