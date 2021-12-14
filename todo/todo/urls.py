@@ -20,22 +20,26 @@ from rest_framework.routers import DefaultRouter
 
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from rest_framework.schemas import get_schema_view
-from users.views import UserCustomViewSet
+from users.views import UserCustomViewSet, UserCustomViewSetV2
 from project.views import ProjectModelViewSet, TodoModelViewSet
 
 router = DefaultRouter()
-router.register('users', UserCustomViewSet)
+# router.register('users', UserCustomViewSet, basename='user')
 router.register('projects', ProjectModelViewSet)
 router.register('todo', TodoModelViewSet)
 
-schema_view = get_schema_view(title='TODO')
+# schema_view = get_schema_view(title='TODO')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token),
-    path('schema/', schema_view),
+    # path('schema/', schema_view),
+    # path('api/<str:version>/users/', UserCustomViewSetV2.as_view()),
+    # path('api/<str:version>/users/', UserCustomViewSetV2.as_view({'get': 'list'})),
+    path('api/users/v1', include('users.urls', namespace='v1')),
+    path('api/users/v2', include('users.urls', namespace='v2')),
     # path('api-token-auth/', obtain_jwt_token),
     # path('api-token-refresh/', refresh_jwt_token),
 ]
