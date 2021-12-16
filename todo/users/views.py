@@ -27,13 +27,14 @@ class UserCustomViewSet(ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIVi
         return UserModelSerializer
 
 
-class UserCustomViewSetV2(ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView):
+class UserCustomViewSetV2(ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, GenericViewSet):
     # permission_classes = [StaffOnly]
     queryset = User.objects.all()
     # serializer_class = UserModelSerializer
     # pagination_class = UserLimitOffsetPagination
 
     def get_serializer_class(self):
+        # if self.kwargs['version'] == 'v2':
         if self.request.version == 'v2':
             return UserModelSerializerVersionTwo
         return UserModelSerializer

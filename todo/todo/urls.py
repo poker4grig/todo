@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
 from rest_framework.authtoken import views
+from rest_framework.permissions import AllowAny
 from rest_framework.routers import DefaultRouter
 
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
-from rest_framework.schemas import get_schema_view
-from users.views import UserCustomViewSet, UserCustomViewSetV2
+
+import users
+from users.views import UserCustomViewSet
 from project.views import ProjectModelViewSet, TodoModelViewSet
 
 router = DefaultRouter()
@@ -29,6 +33,17 @@ router.register('projects', ProjectModelViewSet)
 router.register('todo', TodoModelViewSet)
 
 # schema_view = get_schema_view(title='TODO')
+schema_view = get_schema_view(
+    openapi.Info(
+        title='Todo',
+        default_version='V2',
+        description='Documentation for our project',
+        contact=openapi.Contact(email='test@yandex.ru'),
+        license=openapi.License(name='Test_License'),
+    ),
+    public=True,
+    permission_classes=(AllowAny,)
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,7 +51,12 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token),
     # path('schema/', schema_view),
-    path('api/<str:version>/users/', UserCustomViewSetV2.as_view()),
+    path('swagger/', schema_view.with_ui('swagger')),
+    path('redoc/', schema_view.with_ui('redoc')),
+    path('swagger/<str:format>/', schema_view.without_ui()),
+    path('api/<str:version>/users/', UserCustomViewSet.as_view({'get': 'list'}))
+    # path('api/users/v1', include('users.urls', namespace='v1')),
+    # path('api/users/v2', include('users.urls', namespace='v2')),
 
     # path('api-token-auth/', obtain_jwt_token),
     # path('api-token-refresh/', refresh_jwt_token),
