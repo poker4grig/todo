@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.decorators.csrf import csrf_exempt
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework.authtoken import views
 from rest_framework.permissions import AllowAny
 from rest_framework.routers import DefaultRouter
+from graphene_django.views import GraphQLView
 
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
@@ -54,10 +56,10 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger')),
     path('redoc/', schema_view.with_ui('redoc')),
     path('swagger/<str:format>/', schema_view.without_ui()),
-    path('api/<str:version>/users/', UserCustomViewSet.as_view({'get': 'list'}))
+    path('api/<str:version>/users/', UserCustomViewSet.as_view({'get': 'list'})),
     # path('api/users/v1', include('users.urls', namespace='v1')),
     # path('api/users/v2', include('users.urls', namespace='v2')),
-
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
     # path('api-token-auth/', obtain_jwt_token),
     # path('api-token-refresh/', refresh_jwt_token),
 ]

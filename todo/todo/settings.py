@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'drf_yasg',
+    'graphene_django',
 
 ]
 
@@ -187,3 +188,7 @@ if DEBUG:
 #     'JWT_ALLOW_REFRESH': True,
 #     'JWT_EXPIRATION_DELTA': timedelta(seconds=3600),
 # }
+
+GRAPHENE = {
+    'SCHEMA': 'todo.schema.schema'
+}
