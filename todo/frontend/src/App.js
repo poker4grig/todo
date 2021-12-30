@@ -38,7 +38,6 @@ class App extends React.Component {
                 // const user = this.state.users.filter((item) => item.id === new_project.user)[0]
                 // new_project.user = user
                 // this.setState({projects: [...this.state.projects, new_project]})
-
             }
         ).catch(error => {
             console.log(error)
@@ -51,6 +50,7 @@ class App extends React.Component {
         const data = {user: user, project: project, text: text, is_active: is_active}
         axios.post(`http://127.0.0.1:8000/api/todo/`, data, {headers}).then(
             response => {
+                const todos = response.data.results
                 this.load_data()
             }
         ).catch(error => {
@@ -91,9 +91,7 @@ class App extends React.Component {
         })
     }
 
-
     set_token(token, username) {
-        // console.log(token)
         const cookies = new Cookies()
         cookies.set('token', token)
         this.setState({'token': token, 'whoIsUser': username}, () => this.load_data())
