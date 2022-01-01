@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, HashRouter, Link} from "react-router-dom";
+import {HashRouter, Link} from "react-router-dom";
 
 
 const Menu = ({is_auth, logout, whoIsUser}) => {
