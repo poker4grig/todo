@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import TemplateView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework.authtoken import views
@@ -63,5 +62,4 @@ urlpatterns = [
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
     # path('api-token-auth/', obtain_jwt_token),
     # path('api-token-refresh/', refresh_jwt_token),
-    path('', TemplateView.as_view(template_name='index.html')),
 ]
