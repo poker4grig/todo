@@ -193,6 +193,7 @@ class App extends React.Component {
                 <HashRouter>
                     <Switch>
                         <Route exact path='/users' component={() => <UserList users={this.state.users}/>}/>
+
                         <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}
                                                                                     deleteProject={(id) => this.deleteProject(id)}/>}/>
                         <Route exact path='/projects/create' component={() => <ProjectForm users={this.state.users}
@@ -209,7 +210,7 @@ class App extends React.Component {
                             get_token={(username, password) => this.get_token(username, password)}/>}/>
                         <Redirect from='/project' to='/projects'/>
                         <Redirect from='/user' to='/users'/>
-
+                        <Route path=''><h1 style={{textAlign: "center", color: "#123456"}}>Интернет-приложение для создания заметок "Todo"</h1></Route>
                         <Route component={(NotFound404)}/> } />
                     </Switch>
                 </HashRouter>
