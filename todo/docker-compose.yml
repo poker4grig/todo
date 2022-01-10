@@ -5,7 +5,7 @@ services:
     image: postgres:13.1
     privileged: true
     ports:
-      - 5432:54321
+      - 5432:5432
     environment:
       POSTGRES_USER: poker4grig
       POSTGRES_PASSWORD: 1
@@ -16,12 +16,20 @@ services:
     ports:
       - 8080:8080
     command:
-      bash -c "python manage.py migrate &&
+      bash -c "
+      python manage.py migrate &&
       python manage.py create_users &&
-      python manage.py runserver 0.0.0.0:8080
+      gunicorn todo.wsgi -b 0.0.0.0:8080
       "
     depends_on:
       - db
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - backend
+
 
 
 
